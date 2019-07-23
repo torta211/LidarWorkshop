@@ -30,6 +30,9 @@
     <None Include="data\2019-07-22-12-30-11_Velodyne-VLP-16-Data.pcap">
       <Filter>Data</Filter>
     </None>
+    <None Include="data\2019-07-22-13-51-44_Velodyne-VLP-16-Data.pcap">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordinates.h">
