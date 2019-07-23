@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	cout << "Program Starting" << endl;
-
+	
 	VelodyneVLP16PCAP capture;
 
 	float last_x = 0;

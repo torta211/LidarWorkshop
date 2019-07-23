@@ -131,7 +131,7 @@
     <ClCompile Include="VLP16Capture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="2019-07-22-12-30-11_Velodyne-VLP-16-Data.pcap" />
+    <None Include="data\2019-07-22-12-30-11_Velodyne-VLP-16-Data.pcap" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
