@@ -50,7 +50,7 @@ int main()
 				//we should copy the current frame and pass it to the drawer class
 				ofstream outputFile;
 				// create a name for the file output
-				string filename = "exampleOutput" + to_string(frame_counter) + ".csv";
+				string filename = "Frame" + to_string(frame_counter) + ".csv";
 
 				// create and open the .csv file
 				outputFile.open(filename);
@@ -62,11 +62,12 @@ int main()
 				outputFile.close();
 				frame_counter++;
 				current_frame = Frame();
+				cout << "Frame captured" << endl;
 			}
 			current_frame.push_back(laser.coordinates);
 			last_azimuth = azimuth;
 					   			 
-			if (azimuth < 1 && azimuth > 0 && (id == 0 || id == 7 || id == 15))
+			/*if (azimuth < 1 && azimuth > 0 && (id == 0 || id == 7 || id == 15))
 			{
 				if (id == 0)
 				{
@@ -75,14 +76,14 @@ int main()
 
 				if (cycle_counter > 100)
 				{
-					cout << " distance: " << distance << " (" << static_cast<int>(id) << ")";
+					cout << " distance: " << distance << " coord: " << x << "," << y << "," << z << " (" << static_cast<int>(id) << ")" << endl;
 					if (id == 15)
 					{
 						cycle_counter = 0;
 						cout << endl;
 					}
 				}
-			}
+			}*/
 		}
 	}
 

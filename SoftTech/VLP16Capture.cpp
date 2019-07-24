@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+
 #include <vector>
 #include <pcap.h>
 #include <string>
@@ -9,8 +11,9 @@
 #include <iomanip>
 #include <sstream>
 #include <iostream>
-
+#include <math.h>
 #include "VLP16Capture.h"
+
 
 using namespace std;
 
@@ -285,10 +288,13 @@ void VelodyneVLP16PCAP::parseDataPacket(const DataPacket * packet, std::vector<D
 			laser.id = static_cast<unsigned char>(laser_index % MAX_NUM_LASERS);
 			laser.time = unixtime + static_cast<long long>(laser_relative_time);
 
-			//calculate coordinates
-			laser.coordinates.x = static_cast<float>((laser.distance / 100.0f) * std::sin(laser.azimuth));
-			laser.coordinates.y = static_cast<float>(((laser.distance / 100.0f) * std::cos(laser.vertical)) * std::cos(laser.azimuth));
-			laser.coordinates.z = static_cast<float>(((laser.distance / 100.0f) * std::sin(laser.vertical)));
+			//calculate coordinates			
+			laser.coordinates.x = static_cast<float>((laser.distance / 100.0f) *
+				std::cos(laser.vertical * M_PI / 180.0f) * std::cos(laser.azimuth * M_PI / 180.0f));
+			laser.coordinates.y = static_cast<float>(((laser.distance / 100.0f) *
+				std::cos(laser.vertical * M_PI / 180.0f)) * std::sin(laser.azimuth * M_PI / 180.0f));
+			laser.coordinates.z = static_cast<float>(((laser.distance / 100.0f) *
+				std::sin(laser.vertical * M_PI / 180.0f)));
 
 
 			lasers.push_back(laser);
